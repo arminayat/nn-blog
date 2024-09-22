@@ -7,6 +7,7 @@ import { useAppContext } from "./contexts/appContext";
 import HamburgerSVG from "./icons/svgs/HamburgerSVG";
 import { PublicationLogo } from "./publication-logo";
 import PublicationSidebar from "./sidebar";
+import Link from "next/link";
 
 function hasUrl(
   navbarItem: PublicationNavbarItem,
@@ -78,38 +79,39 @@ export const Header = () => {
 
   return (
     <header className="py-1 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900">
-      <Container className="grid grid-cols-4 gap-5 px-5">
-        <div className="col-span-2 flex flex-1 flex-row items-center gap-2 lg:col-span-1">
-          <div className="lg:hidden">
-            <Button
-              type="outline"
-              label=""
-              icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
-              className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-slate-900 dark:hover:bg-neutral-800"
-              onClick={toggleSidebar}
-            />
-
-            {isSidebarVisible && (
-              <PublicationSidebar
-                navbarItems={navbarItems}
-                toggleSidebar={toggleSidebar}
-              />
-            )}
-          </div>
-          <div className="hidden lg:block text-3xl">
-            Nn. <span className="text-2xl">blog</span>
-          </div>
-        </div>
-        <div className="col-span-2 flex flex-row items-center justify-end gap-5 text-slate-300 lg:col-span-3">
-          <nav className="hidden lg:block">{navList}</nav>
+      <Container className="flex flex-row items-center gap-1 md:gap-5 px-5">
+        <div className="lg:hidden">
           <Button
-            href={baseUrl}
-            as="a"
             type="outline"
-            label="Back To Nestornotes"
-            className="bg-black"
+            label=""
+            icon={<HamburgerSVG className="h-7 w-7 stroke-current" />}
+            className="rounded-xl border-transparent !px-2 !py-2 text-primary hover:bg-slate-100 dark:hover:bg-neutral-800"
+            onClick={toggleSidebar}
           />
+
+          {isSidebarVisible && (
+            <PublicationSidebar
+              navbarItems={navbarItems}
+              toggleSidebar={toggleSidebar}
+            />
+          )}
         </div>
+        <div className="flex flex-row md:gap-10 items-end w-full">
+          <Link className="text-3xl w-40 md:w-36" href="/blog">
+            Nn. <span className="text-2xl">blog</span>
+          </Link>
+          <div className="flex flex-row items-end justify-between w-full">
+            <Link className="mb-0.5 opacity-0 md:opacity-100" href="/blog">
+              Home
+            </Link>
+            <Link className="mb-0.5" href="/">
+              Back to Nestornotes
+            </Link>
+          </div>
+        </div>
+        {/* <div className="col-span-2 flex flex-row items-center justify-end gap-5 text-slate-300 lg:col-span-3">
+          <nav className="hidden lg:block">{navList}</nav>
+        </div> */}
       </Container>
       <div className="mt-5 flex justify-center lg:hidden">
         <div className="hidden lg:block text-3xl">
