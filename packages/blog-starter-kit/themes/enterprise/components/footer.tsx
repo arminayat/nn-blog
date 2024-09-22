@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <footer className="py-5 dark:border-neutral-800 ">
       <Container className="px-5">
-        <div className="mb-10 flex w-full flex-row justify-center">
+        <div className="my-6 flex w-full flex-row justify-center">
           <Link
             href={"/"}
             aria-label={`${publication.title} home page`}
