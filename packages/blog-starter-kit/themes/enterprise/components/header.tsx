@@ -20,62 +20,10 @@ export const Header = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>();
   const { publication } = useAppContext();
   const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
-  const visibleItems = navbarItems.slice(0, 3);
-  const hiddenItems = navbarItems.slice(3);
 
   const toggleSidebar = () => {
     setIsSidebarVisible((prevVisibility) => !prevVisibility);
   };
-
-  const navList = (
-    <ul className="flex flex-row items-center gap-2 text-white">
-      {visibleItems.map((item) => (
-        <li key={item.url}>
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-200 block max-w-[200px] truncate text-ellipsis whitespace-nowrap rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-
-      {hiddenItems.length > 0 && (
-        <li>
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger asChild>
-              <button className="transition-200 block rounded-full p-2 transition-colors hover:bg-white hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white">
-                More
-              </button>
-            </DropdownMenu.Trigger>
-
-            <DropdownMenu.Portal>
-              <DropdownMenu.Content
-                className="w-48 rounded border border-gray-300 bg-white text-neutral-950 shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
-                align="end"
-                sideOffset={5}
-              >
-                {hiddenItems.map((item) => (
-                  <DropdownMenu.Item asChild key={item.url}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition-200 block truncate p-2 transition-colors hover:bg-slate-100 hover:text-black dark:hover:bg-neutral-800 dark:hover:text-white"
-                    >
-                      {item.label}
-                    </a>
-                  </DropdownMenu.Item>
-                ))}
-              </DropdownMenu.Content>
-            </DropdownMenu.Portal>
-          </DropdownMenu.Root>
-        </li>
-      )}
-    </ul>
-  );
 
   return (
     <header className="py-1 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900">
@@ -101,10 +49,10 @@ export const Header = () => {
             Nn. <span className="text-2xl">blog</span>
           </Link>
           <div className="flex flex-row items-end justify-between w-full">
-            <Link className="mb-0.5 opacity-0 md:opacity-100" href="/blog">
+            <Link className="mb-0.5 opacity-0 md:opacity-100" href="/">
               Home
             </Link>
-            <Link className="mb-0.5" href="/">
+            <Link className="mb-0.5" href={baseUrl}>
               Back to Nestornotes
             </Link>
           </div>
