@@ -45,11 +45,11 @@ export const Header = () => {
           )}
         </div>
         <div className="flex flex-row md:gap-10 items-end w-full">
-          <Link className="text-3xl w-40 md:w-36" href="/blog">
+          <Link className="text-3xl w-40 md:w-36" href="/">
             Nn. <span className="text-2xl">blog</span>
           </Link>
           <div className="flex flex-row items-end justify-between w-full">
-            <Link className="mb-0.5 opacity-0 md:opacity-100" href="/">
+            <Link className="mb-0.5 opacity-0 md:opacity-100" href={"/"}>
               Home
             </Link>
             <Link className="mb-0.5" href={baseUrl}>
