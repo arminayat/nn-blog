@@ -17,6 +17,7 @@ function hasUrl(
 
 export const Header = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "/";
+  const mainUrl = process.env.NEXT_PUBLIC_MAIN_URL || "/";
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>();
   const { publication } = useAppContext();
   const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
@@ -52,7 +53,7 @@ export const Header = () => {
             <Link className="mb-0.5 opacity-0 md:opacity-100" href={"/"}>
               Home
             </Link>
-            <Link className="mb-0.5" href={baseUrl}>
+            <Link className="mb-0.5" href={mainUrl}>
               Back to Nestornotes
             </Link>
           </div>
